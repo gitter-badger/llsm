@@ -49,6 +49,7 @@ lazy val commonSettings = List(
     _.filterNot(disabledReplOptions.contains(_))
   },
   scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value,
+  wartremoverWarnings in (Compile, compile) ++= Warts.unsafe,
   libraryDependencies ++= Seq(
     "com.lihaoyi" % "ammonite" % "0.8.1" % "test" cross CrossVersion.full),
   initialCommands in (Test, console) := """ammonite.Main().run()""",
